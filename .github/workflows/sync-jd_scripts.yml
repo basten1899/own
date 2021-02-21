@@ -3,7 +3,7 @@ name: sync-jd_scripts
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: '*/20 0-16 * * *'
 
 jobs:
   build:
