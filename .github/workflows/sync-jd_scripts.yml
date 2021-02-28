@@ -33,7 +33,7 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         directory: master
-        github_token: ${{ secrets.PAT }}
+        github_token: ${{ secrets.PULL }}
         branch: master
 
     - name: Clone Main
@@ -44,7 +44,7 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         directory: main
-        github_token: ${{ secrets.PAT }}
+        github_token: ${{ secrets.PULL }}
         branch: main
 
     - name: Delete workflow runs
