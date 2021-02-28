@@ -32,7 +32,6 @@ jobs:
     - name: Push Master
       uses: ad-m/github-push-action@master
       with:
-        paths-ignore: -.github/workflows/deploy_tencent_scf.yml
         directory: master
         github_token: ${{ secrets.PAT }}
         branch: master
