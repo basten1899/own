@@ -9,16 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-    
     - name: Init Build Dependencies
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo -E rm -rf /etc/apt/sources.list.d
-        sudo -E apt-get update -y && apt-get install -y build-essential git git-core curl wget && apt-get clean -y
+        sudo -E apt-get update -y
+        sudo -E apt-get install -y build-essential git git-core curl wget
+        sudo -E apt-get clean -y
         git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
 
-    - name: Prepare
+    - name: Prepare Key
       run: |
         mkdir -p ~/.ssh
         echo -e "${{ secrets.LXKEY }}" > ~/.ssh/id_rsa
@@ -33,25 +34,13 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         directory: master
-        github_token: ${{ secrets.PULL }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: master
 
-    - name: Clone Main
-      run: |
-        git clone -b main git@gitee.com:lxk0301/jd_scripts.git main
-
-    - name: Push Main
-      uses: ad-m/github-push-action@master
-      with:
-        directory: main
-        github_token: ${{ secrets.PULL }}
-        branch: main
-
-    - name: Delete workflow runs
+    - name: Delete Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
       with:
-        token: ${{ secrets.PAT }}
+        token: ${{ github.token }}
         repository: ${{ github.repository }}
         retain_days: 1
         keep_minimum_runs: 0
-
