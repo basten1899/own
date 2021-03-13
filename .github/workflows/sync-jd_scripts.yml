@@ -41,6 +41,8 @@ jobs:
       run: |
          cd master
          git rm -r .github/workflows
+         git commit -am 'del yml'
+         git push
 
     - name: Delete Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
