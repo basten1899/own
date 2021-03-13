@@ -42,7 +42,12 @@ jobs:
          cd master
          git rm -r .github/workflows
          git commit -am 'del yml'
-         git push
+    - name: Push Master
+      uses: ad-m/github-push-action@master
+      with:
+        directory: master
+        github_token: ${{ secrets.PULL }}
+        branch: master
 
     - name: Delete Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
