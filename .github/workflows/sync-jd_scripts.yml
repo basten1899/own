@@ -34,7 +34,7 @@ jobs:
     - name:  reset
       run: |
          cd master
-         git  --hard 825ff91
+         git reset --hard 825ff91
          
     - name: Push Master
       uses: ad-m/github-push-action@master
