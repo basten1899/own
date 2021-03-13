@@ -25,7 +25,12 @@ jobs:
         echo -e "${{ secrets.LXKEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan gitee.com > ~/.ssh/known_hosts
-
+        
+    - name:  reset
+      run: |
+         cd master
+         git  --hard 825ff91
+         
     - name: Clone Master
       run: |
         git clone -b master git@gitee.com:lxk0301/jd_scripts.git master
@@ -37,10 +42,7 @@ jobs:
         github_token: ${{ secrets.PULL }}
         branch: master
         
-    - name:  reset
-      run: |
-         cd master
-         git  --hard 825ff91
+
 
 
     - name: Delete Workflow Runs
