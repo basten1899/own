@@ -36,6 +36,11 @@ jobs:
         directory: master
         github_token: ${{ secrets.PULL }}
         branch: master
+        
+    - name:  Del yml
+      run: |
+         cd master
+         git rm -r .github/workflows
 
     - name: Delete Workflow Runs
       uses: Mattraks/delete-workflow-runs@main
