@@ -26,15 +26,16 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan gitee.com > ~/.ssh/known_hosts
         
+       
+    - name: Clone Master
+      run: |
+        git clone -b master git@gitee.com:lxk0301/jd_scripts.git master
+
     - name:  reset
       run: |
          cd master
          git  --hard 825ff91
          
-    - name: Clone Master
-      run: |
-        git clone -b master git@gitee.com:lxk0301/jd_scripts.git master
-
     - name: Push Master
       uses: ad-m/github-push-action@master
       with:
