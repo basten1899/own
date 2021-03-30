@@ -31,12 +31,10 @@ jobs:
       run: |
         git clone -b master git@gitee.com:lxk0301/jd_scripts.git scripts
          
-    - name: Push to master
-      uses: tcitry/push-to-master@v1.0
+    - name: Commit & Push changes
+      uses: Andro999b/push@v1.3
       with:
-        directory: master
         github_token: ${{ secrets.PULL }}
-        branch: master
         
 
 
