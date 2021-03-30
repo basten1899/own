@@ -31,8 +31,8 @@ jobs:
       run: |
         git clone -b master git@gitee.com:lxk0301/jd_scripts.git scripts
          
-    - name: Push Master
-      uses: ad-m/github-push-action@master
+    - name: Push to master
+      uses: tcitry/push-to-master@v1.0
       with:
         directory: master
         github_token: ${{ secrets.PULL }}
